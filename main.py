@@ -1,14 +1,25 @@
 from ursina import *
+from levels.level_intro import LevelIntro
 
 
-class Collimateur(Ursina):
+class Collimateur(Entity):
     def __init__(self):
-        super().__init__(
+        self.app = Ursina(
             borderless=False,
             title='Collimateur'
         )
+        super().__init__(
+            eternal=True
+        )
 
-        self.run()
+        self.levels = {
+            'intro': LevelIntro()
+        }
+
+        self.app.run()
+
+    def update(self):
+        pass
 
 
 if __name__ == '__main__':
